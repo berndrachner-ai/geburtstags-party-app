@@ -1,47 +1,88 @@
-Typ,Kategorie,Text
-Eigenschaft,Herz & Seele,Herzlich
-Eigenschaft,Herz & Seele,Hilfsbereit
-Eigenschaft,Herz & Seele,Loyal / Treu
-Eigenschaft,Herz & Seele,Groﬂz¸gig
-Eigenschaft,Herz & Seele,Empathisch
-Eigenschaft,Herz & Seele,Ein Sonnenschein
-Eigenschaft,Herz & Seele,Fels in der Brandung
-Eigenschaft,Kopf & Charakter,Schlagfertig
-Eigenschaft,Kopf & Charakter,Kreativ
-Eigenschaft,Kopf & Charakter,Ehrgeizig
-Eigenschaft,Kopf & Charakter,Scharfsinnig / Klug
-Eigenschaft,Kopf & Charakter,Die Ruhe selbst
-Eigenschaft,Kopf & Charakter,Organisiert / Planungsgenie
-Eigenschaft,Kopf & Charakter,Spontan / Flexibel
-Eigenschaft,Stimmung & Party,Humorvoll / Witzbold
-Eigenschaft,Stimmung & Party,Party-Tier
-Eigenschaft,Stimmung & Party,Abenteuerlustig
-Eigenschaft,Stimmung & Party,Charmant
-Eigenschaft,Stimmung & Party,Laut & Lustig
-Eigenschaft,Stimmung & Party,Genieﬂerisch
-Eigenschaft,Macken (Liebenswert),Tollpatschig
-Eigenschaft,Macken (Liebenswert),Morgenmuffel
-Eigenschaft,Macken (Liebenswert),Schokoladen-Vernichter
-Eigenschaft,Macken (Liebenswert),Besserwisser
-Eigenschaft,Macken (Liebenswert),Vergesslich / Zerstreut
-Eigenschaft,Macken (Liebenswert),Ungeduldig
-Eigenschaft,Macken (Liebenswert),Chaotisch
-Wunsch,Wohlbefinden,Gesundheit wie ein B‰r
-Wunsch,Wohlbefinden,Nerven aus Stahl
-Wunsch,Wohlbefinden,Innere Ruhe
-Wunsch,Wohlbefinden,Endlos viel Energie
-Wunsch,Wohlbefinden,Zeit f¸r sich selbst (Me-Time)
-Wunsch,Erfolg & Geld,Lottogewinn
-Wunsch,Erfolg & Geld,Beruflicher Hˆhenflug
-Wunsch,Erfolg & Geld,Traumauto / Traumhaus
-Wunsch,Erfolg & Geld,Dass alle Pl‰ne gelingen
-Wunsch,Erfolg & Geld,Voller K¸hlschrank & guter Wein
-Wunsch,Erlebnis,Spannende Weltreisen
-Wunsch,Erlebnis,Legend‰re Partys
-Wunsch,Erlebnis,Lachanf‰lle bis der Bauch wehtut
-Wunsch,Erlebnis,Kulinarische Hˆhepunkte
-Wunsch,Erlebnis,Inspirierende Begegnungen
-Wunsch,Liebe,Schmetterlinge im Bauch
-Wunsch,Liebe,Treue Freunde
-Wunsch,Liebe,Harmonie in der Familie
-Wunsch,Liebe,Romantische Momente
+ÔªøColumn1;Column2;Column3
+Typ;Kategorie;Text
+Eigenschaft;Herz & Seele;Herzlich
+Eigenschaft;Herz & Seele;Hilfsbereit
+Eigenschaft;Herz & Seele;Loyal / Treu
+Eigenschaft;Herz & Seele;Gro√üz√ºgig
+Eigenschaft;Herz & Seele;Empathisch
+Eigenschaft;Herz & Seele;Ein Sonnenschein
+Eigenschaft;Herz & Seele;Fels in der Brandung
+Eigenschaft;Herz & Seele;antriebsstark
+Eigenschaft;Herz & Seele;ausstrahlend
+Eigenschaft;Herz & Seele;behutsam
+Eigenschaft;Herz & Seele;brillant
+Eigenschaft;Herz & Seele;ehrlich
+Eigenschaft;Herz & Seele;einf√ºhlsam
+Eigenschaft;Herz & Seele;energisch
+Eigenschaft;Kopf & Charakter;inspirierend
+Eigenschaft;Kopf & Charakter;konzentriert
+Eigenschaft;Kopf & Charakter;lebensklug
+Eigenschaft;Kopf & Charakter;standhaft
+Eigenschaft;Kopf & Charakter;vision√§r
+Eigenschaft;Kopf & Charakter;warmherzig
+Eigenschaft;Kopf & Charakter;wertsch√§tzend
+Eigenschaft;Kopf & Charakter;kontrolliert
+Eigenschaft;Kopf & Charakter;selbstreflektiert
+Eigenschaft;Kopf & Charakter;stark
+Eigenschaft;Kopf & Charakter;vertrauensw√ºrdig
+Eigenschaft;Kopf & Charakter;warmherzig
+Eigenschaft;Kopf & Charakter;witzig
+Eigenschaft;Kopf & Charakter;kultiviert
+Eigenschaft;Kopf & Charakter;Schlagfertig
+Eigenschaft;Kopf & Charakter;Kreativ
+Eigenschaft;Kopf & Charakter;Ehrgeizig
+Eigenschaft;Kopf & Charakter;Scharfsinnig / Klug
+Eigenschaft;Kopf & Charakter;Die Ruhe selbst
+Eigenschaft;Kopf & Charakter;Organisiert / Planungsgenie
+Eigenschaft;Kopf & Charakter;Spontan / Flexibel
+Eigenschaft;Stimmung & Party;Humorvoll / Witzbold
+Eigenschaft;Stimmung & Party;Party-Tier
+Eigenschaft;Stimmung & Party;Abenteuerlustig
+Eigenschaft;Stimmung & Party;Charmant
+Eigenschaft;Stimmung & Party;Laut & Lustig
+Eigenschaft;Stimmung & Party;Genie√üerisch
+Eigenschaft;Stimmung & Party;ausgereift
+Eigenschaft;Stimmung & Party;charismatisch
+Eigenschaft;Stimmung & Party;clever
+Eigenschaft;Stimmung & Party;ermutigend
+Eigenschaft;Stimmung & Party;jovial
+Eigenschaft;Stimmung & Party;liebenswert
+Eigenschaft;Stimmung & Party;lernbereit
+Eigenschaft;Stimmung & Party;naturverbunden
+Eigenschaft;Stimmung & Party;offenherzig
+Eigenschaft;Stimmung & Party;optimistisch
+Eigenschaft;Stimmung & Party;pragmatisch
+Eigenschaft;Stimmung & Party;qualit√§tsbewusst
+Eigenschaft;Stimmung & Party;respektvoll
+Eigenschaft;Stimmung & Party;sanft
+Eigenschaft;Stimmung & Party;systematisch
+Eigenschaft;Stimmung & Party;treu
+Eigenschaft;Stimmung & Party;uneigenn√ºtzig
+Eigenschaft;Stimmung & Party;verl√§sslich
+Eigenschaft;Stimmung & Party;sattelfest
+Eigenschaft;Macken (Liebenswert);Tollpatschig
+Eigenschaft;Macken (Liebenswert);Morgenmuffel
+Eigenschaft;Macken (Liebenswert);Schokoladen-Vernichter
+Eigenschaft;Macken (Liebenswert);Besserwisser
+Eigenschaft;Macken (Liebenswert);Vergesslich / Zerstreut
+Eigenschaft;Macken (Liebenswert);Ungeduldig
+Eigenschaft;Macken (Liebenswert);Chaotisch
+Wunsch;Wohlbefinden;Gesundheit wie ein B√§r
+Wunsch;Wohlbefinden;Nerven aus Stahl
+Wunsch;Wohlbefinden;Innere Ruhe
+Wunsch;Wohlbefinden;Endlos viel Energie
+Wunsch;Wohlbefinden;Zeit f√ºr sich selbst (Me-Time)
+Wunsch;Erfolg & Geld;Lottogewinn
+Wunsch;Erfolg & Geld;Beruflicher H√∂henflug
+Wunsch;Erfolg & Geld;Traumauto / Traumhaus
+Wunsch;Erfolg & Geld;Dass alle Pl√§ne gelingen
+Wunsch;Erfolg & Geld;Voller K√ºhlschrank & guter Wein
+Wunsch;Erlebnis;Spannende Weltreisen
+Wunsch;Erlebnis;Legend√§re Partys
+Wunsch;Erlebnis;Lachanf√§lle bis der Bauch wehtut
+Wunsch;Erlebnis;Kulinarische H√∂hepunkte
+Wunsch;Erlebnis;Inspirierende Begegnungen
+Wunsch;Liebe;Schmetterlinge im Bauch
+Wunsch;Liebe;Treue Freunde
+Wunsch;Liebe;Harmonie in der Familie
+Wunsch;Liebe;Romantische Momente
