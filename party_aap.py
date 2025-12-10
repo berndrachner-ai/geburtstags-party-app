@@ -265,12 +265,12 @@ def render_host_view():
         top_wishes = []
         if props:
             c = Counter(props)
-            top_props = [k for k, v in c.most_common(15)]
+            top_props = [k for k, v in c.most_common(25)]
             c1.subheader("Top Eigenschaften")
             c1.bar_chart(pd.DataFrame.from_dict(c, orient='index', columns=['Anzahl']))
         if wishes:
             c = Counter(wishes)
-            top_wishes = [k for k, v in c.most_common(15)]
+            top_wishes = [k for k, v in c.most_common(10)]
             c2.subheader("Top Wünsche")
             c2.bar_chart(pd.DataFrame.from_dict(c, orient='index', columns=['Anzahl']))
         with st.expander("Insider Infos"):
@@ -309,4 +309,5 @@ def render_host_view():
 if __name__ == "__main__":
 
     main()
+
 
