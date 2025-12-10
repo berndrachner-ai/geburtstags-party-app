@@ -282,7 +282,7 @@ def render_host_view():
         insider_text = ""
         if insiders:
             import random
-            s = random.sample(insiders, min(3, len(insiders)))
+            s = random.sample(insiders, min(6, len(insiders)))
             insider_text = f"Details: {', '.join(s)}."
 
         prompt = f"Gedicht für {name} ({alter}). Eigenschaften: {', '.join(top_props)}. Wünsche: {', '.join(top_wishes)}. {insider_text}. Reimschema AABB."
@@ -307,4 +307,5 @@ def render_host_view():
         st.write(raw_data)
 
 if __name__ == "__main__":
+
     main()
