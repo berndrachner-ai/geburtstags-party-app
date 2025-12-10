@@ -38,59 +38,45 @@ st.markdown("""
     <style>
     .stButton>button { width: 100%; border-radius: 10px; height: 3em; }
     .big-header { font-size: 2.5rem !important; color: #FF4B4B; text-align: center; }
+    /* Verstecke Streamlit Menü für cleanen Look */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-# --- DATENBANK MANAGEMENT (FIRESTORE) MIT DIAGNOSE ---
+# --- DATENBANK MANAGEMENT (FIRESTORE) ---
 
 @st.cache_resource
 def get_db():
     """Verbindet sich mit Firestore und gibt Fehlermeldungen aus."""
     if not FIREBASE_AVAILABLE:
-        st.sidebar.error("❌ Python-Modul 'firebase-admin' fehlt.")
-        st.sidebar.info("Lösung: Füge 'firebase-admin' zu requirements.txt hinzu.")
         return None
     
     try:
         # Prüfen, ob wir schon verbunden sind
         if not firebase_admin._apps:
-            # Wir suchen nach den Secrets in Streamlit
             if "textkey" not in st.secrets:
-                st.sidebar.warning("⚠️ Secret 'textkey' nicht gefunden.")
                 return None
                 
             key_content = st.secrets["textkey"]
             key_dict = None
 
-            # Fall A: Key ist ein String (JSON in TOML) - Das ist der Standardweg
+            # JSON Parsing Logik (String oder Dict)
             if isinstance(key_content, str):
                 try:
-                    # Versuchen striktes JSON zu parsen, erlauben aber Steuerzeichen
                     key_dict = json.loads(key_content, strict=False)
-                except json.JSONDecodeError as e:
-                    st.sidebar.error(f"❌ JSON Format-Fehler in Secrets: {e}")
-                    st.sidebar.info("Tipp: Achte auf die drei Anführungszeichen am Anfang/Ende.")
+                except json.JSONDecodeError:
                     return None
-            
-            # Fall B: Key wurde von Streamlit automatisch als Dict erkannt
             elif isinstance(key_content, dict) or hasattr(key_content, "type"):
                 key_dict = dict(key_content)
             
-            else:
-                st.sidebar.error(f"❌ Unbekanntes Format für 'textkey': {type(key_content)}")
-                return None
-
-            # Initialisierung versuchen
             if key_dict:
                 cred = credentials.Certificate(key_dict)
                 firebase_admin.initialize_app(cred)
                 
         return firestore.client()
 
-    except Exception as e:
-        st.sidebar.error(f"❌ Verbindungsfehler: {e}")
+    except Exception:
         return None
 
 def save_vote_to_db(name, properties, wishes, insider):
@@ -107,8 +93,7 @@ def save_vote_to_db(name, properties, wishes, insider):
         try:
             db.collection("votes").add(data)
             return True
-        except Exception as e:
-            st.error(f"Fehler beim Speichern: {e}")
+        except Exception:
             return False
     else:
         if 'local_votes' not in st.session_state:
@@ -191,25 +176,29 @@ def main():
     df = load_data()
     db = get_db()
     
-    # --- STATUS ANZEIGE ---
-    st.sidebar.header("Diagnose")
-    if db:
-        st.sidebar.success("✅ Datenbank Verbunden")
-    else:
-        st.sidebar.error("❌ Keine Verbindung")
-        # Hier geben wir einen Tipp, falls man lokal testet
-        if os.path.exists(".streamlit/secrets.toml"):
-             st.sidebar.info("Lokale secrets.toml gefunden. Format prüfen.")
-        else:
-             st.sidebar.info("Cloud Modus (oder secrets.toml fehlt lokal).")
-
-    st.sidebar.divider()
     st.sidebar.title("Navigation")
     nav = st.sidebar.radio("Gehe zu:", ["🎉 Für Gäste", "🔐 Host / Admin"])
 
+    # --- ANZEIGELOGIK ---
+
     if nav == "🎉 Für Gäste":
+        # Gäste sehen keine Diagnose, nur die App
         render_guest_view(df, db_connected=(db is not None))
+    
     else:
+        # --- NUR ADMIN SIEHT DIAGNOSE ---
+        st.sidebar.divider()
+        st.sidebar.header("System-Status")
+        if db:
+            st.sidebar.success("✅ Datenbank Verbunden")
+        else:
+            st.sidebar.error("❌ Keine Datenbank")
+            if os.path.exists(".streamlit/secrets.toml"):
+                 st.sidebar.info("Lokal (secrets.toml)")
+            else:
+                 st.sidebar.info("Cloud Modus (Secrets prüfen!)")
+        
+        # --- ADMIN LOGIN & VIEW ---
         if check_password():
             if st.sidebar.button("Log out"):
                 st.session_state["is_admin_logged_in"] = False
@@ -219,6 +208,10 @@ def main():
 def render_guest_view(df, db_connected):
     st.markdown(f"<h1 class='big-header'>{APP_TITLE}</h1>", unsafe_allow_html=True)
     
+    # Dezenter Hinweis für Gäste, falls Cloud ausfällt (wichtig für UX)
+    if not db_connected:
+        st.warning("⚠️ Hinweis: Offline-Modus. Bitte Seite nicht neu laden.")
+
     with st.form("guest_form", clear_on_submit=True):
         st.write("Dein Name (Optional):")
         name = st.text_input("Name")
@@ -250,9 +243,10 @@ def render_guest_view(df, db_connected):
             else:
                 saved = save_vote_to_db(name, selected_eigenschaften, selected_wuensche, insider)
                 if saved:
-                    st.success("Gespeichert in der Cloud! ☁️")
+                    st.success("Gespeichert! Vielen Dank ☁️")
+                    st.balloons()
                 else:
-                    st.warning("Nur lokal gespeichert! (Siehe Diagnose links)")
+                    st.warning("Lokal gespeichert.")
                 time.sleep(2)
                 st.rerun()
 
@@ -301,14 +295,15 @@ def render_host_view():
             
         if st.button("Generieren"):
             if api_key and OPENAI_AVAILABLE:
-                res = generate_poem_with_openai(api_key, prompt)
+                with st.spinner("Dichte..."):
+                    res = generate_poem_with_openai(api_key, prompt)
                 st.markdown(f"### Gedicht für {name}")
                 st.write(res)
             else:
                 st.error("Key fehlt oder OpenAI Modul nicht da.")
     
     with tab3:
-        st.info("Datenbank-Inhalt:")
+        st.info("Datenbank-Inhalt (Live):")
         st.write(raw_data)
 
 if __name__ == "__main__":
